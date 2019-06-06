@@ -5,7 +5,9 @@ package com.gaoxi.redis.service;
  * @date 2017/11/1 下午3:15
  * @description
  */
+
 import java.io.Serializable;
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -77,11 +79,22 @@ public class RedisServiceImpl implements RedisService {
      * @return
      */
     @Override
-    public Object get(final String key) {
+    public Serializable get(final String key) {
         Object result = null;
         ValueOperations<Serializable, Object> operations = redisTemplate.opsForValue();
         result = operations.get(key);
-        return result;
+        return (Serializable) result;
+    }
+
+
+    @Override
+    public <K, HK, HV> boolean setMap(K key, Map<HK, HV> map, Long expireTime) {
+        return false;
+    }
+
+    @Override
+    public <K, HK, HV> Map<HK, HV> getMap(K key) {
+        return null;
     }
 
     /**
@@ -92,7 +105,7 @@ public class RedisServiceImpl implements RedisService {
      * @return
      */
     @Override
-    public boolean set(final String key, Object value) {
+    public boolean set(final String key, Serializable value) {
         boolean result = false;
         try {
             ValueOperations<Serializable, Object> operations = redisTemplate.opsForValue();
@@ -112,7 +125,7 @@ public class RedisServiceImpl implements RedisService {
      * @return
      */
     @Override
-    public boolean set(final String key, Object value, Long expireTime) {
+    public boolean set(final String key, Serializable value, Long expireTime) {
         boolean result = false;
         try {
             ValueOperations<Serializable, Object> operations = redisTemplate.opsForValue();

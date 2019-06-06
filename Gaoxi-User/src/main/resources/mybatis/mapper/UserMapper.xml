@@ -10,7 +10,6 @@
         <result property="mail" column="mail"/>
         <result property="licencePic" column="licence_pic"/>
         <result property="registerTime" column="register_time"/>
-        <result property="registerTime" column="register_time"/>
         <result property="userTypeEnum" column="user_type" typeHandler="com.gaoxi.typehandler.EnumTypeHandler"/>
         <result property="userStateEnum" column="user_state" typeHandler="com.gaoxi.typehandler.EnumTypeHandler"/>
 
